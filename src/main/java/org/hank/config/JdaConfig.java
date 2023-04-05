@@ -1,8 +1,9 @@
-package org.hank;
+package org.hank.config;
 
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.requests.GatewayIntent;
+import org.hank.handler.MessageReceiveHandler;
 
 import javax.security.auth.login.LoginException;
 

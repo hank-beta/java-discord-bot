@@ -1,7 +1,7 @@
 package org.hank;
 
 public class GameManager {
-    private boolean gameSwitch;
+    boolean gameSwitch;
 
     public boolean gameStart() {
         gameSwitch = true;
