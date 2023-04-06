@@ -7,16 +7,9 @@ public class RpsCommand implements Commandable {
     @Override
     public void doCommand(MessageChannel channel, String message) {
         // !도박 [가위,바위,보]
-        String rawMessage = message.substring(1);
-        String[] splited = rawMessage.split(" ");
-
         int computer = (int) Math.round(Math.random() * 3);
 
-        if (splited.length != 2) {
-            return;
-        }
-
-        if (splited[1].equals("가위")) {
+        if (message.equals("가위")) {
             if (computer == 0) {
                 channel.sendMessage("비겼습니다!").queue();
             } else if (computer == 1) {
@@ -24,7 +17,7 @@ public class RpsCommand implements Commandable {
             } else {
                 channel.sendMessage("이겼습니다!").queue();
             }
-        } else if (splited[1].equals("바위")) {
+        } else if (message.equals("바위")) {
             if (computer == 0) {
                 channel.sendMessage("이겼습니다!").queue();
             } else if (computer == 1) {
@@ -32,7 +25,7 @@ public class RpsCommand implements Commandable {
             } else {
                 channel.sendMessage("졌습니다!").queue();
             }
-        } else if (splited[1].equals("보")) {
+        } else if (message.equals("보")) {
             if (computer == 0) {
                 channel.sendMessage("졌습니다!").queue();
             } else if (computer == 1) {
@@ -40,11 +33,13 @@ public class RpsCommand implements Commandable {
             } else {
                 channel.sendMessage("비겼습니다!").queue();
             }
+        } else {
+            channel.sendMessage("가위, 바위, 보 중에 내주세요.").queue();
         }
     }
 
     @Override
-    public String getCommandType() {
-        return "가위바위보";
+    public CommandType getCommandType() {
+        return CommandType.RPS;
     }
 }

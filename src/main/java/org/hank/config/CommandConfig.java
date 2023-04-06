@@ -1,27 +1,31 @@
 package org.hank.config;
 
-import org.hank.command.Commandable;
-import org.hank.command.ReactionCommand;
-import org.hank.command.RpsCommand;
+import org.hank.command.*;
+import org.jetbrains.annotations.NotNull;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Arrays;
+import java.util.List;
 
 public class CommandConfig {
-    Map<String, Commandable> commandableMap = new HashMap<>();
 
-    public CommandConfig() { // 생성자
-        commandableMap.put("*도박", new RpsCommand());
-        commandableMap.put("", new ReactionCommand());
-    }
+    public CommandConfig() { // CommandHolder 최초 생성 및 등록
+        CommandHolder holder = CommandHolder.getInstance();
 
-    public Commandable getCommand(String commandPrefix) {
-        if (commandableMap.containsKey(commandPrefix)) {
-            return commandableMap.get(commandPrefix);
-        } else {
-            return commandableMap.get("");
+        List<Commandable> commandables = getCommandables();
+
+        for (Commandable commandable : commandables) {
+            holder.getCommandableMap()
+                    .put(commandable.getCommandType(), commandable);
         }
-
     }
 
+    @NotNull
+    private static List<Commandable> getCommandables() {
+        List<Commandable> commandables = Arrays.asList(
+                new RpsCommand(),
+                new ReactionCommand(),
+                new ImageCommand()
+        );
+        return commandables;
+    }
 }
