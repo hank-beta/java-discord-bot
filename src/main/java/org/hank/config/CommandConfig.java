@@ -24,7 +24,8 @@ public class CommandConfig {
         List<Commandable> commandables = Arrays.asList(
                 new RpsCommand(),
                 new ReactionCommand(),
-                new ImageCommand()
+                new ImageCommand(),
+                new MyLoveCommand()
         );
         return commandables;
     }

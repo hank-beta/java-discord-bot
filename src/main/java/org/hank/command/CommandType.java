@@ -7,7 +7,8 @@ import java.util.Set;
 public enum CommandType {
     REACTION("사랑해", "안녕"),
     RPS("도박", "ㄷㅂ", "ㄷ", "rps"),
-    IMAGE("코코미", "에밀TS", "ㅋㅋㅁ");
+    IMAGE("코코미", "에밀TS", "ㅋㅋㅁ"),
+    MYLOVE("미연시", "ㅁㅇㅅ");
 
     private final Set<String> commandSet = new HashSet<>();
 

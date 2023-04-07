@@ -1,11 +1,12 @@
 package org.hank.command;
 
 import net.dv8tion.jda.api.entities.MessageChannel;
+import net.dv8tion.jda.api.entities.User;
 import org.hank.command.Commandable;
 
 public class RpsCommand implements Commandable {
     @Override
-    public void doCommand(MessageChannel channel, String message) {
+    public void doCommand(MessageChannel channel, User user, String message) {
         // !도박 [가위,바위,보]
         int computer = (int) Math.round(Math.random() * 3);
 

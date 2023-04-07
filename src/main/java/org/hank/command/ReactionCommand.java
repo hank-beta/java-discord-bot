@@ -3,6 +3,7 @@ package org.hank.command;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.entities.MessageEmbed;
+import net.dv8tion.jda.api.entities.User;
 
 import java.awt.*;
 import java.time.LocalDateTime;
@@ -11,7 +12,7 @@ import static org.hank.utils.BotEventUtils.sendMessage;
 
 public class ReactionCommand implements Commandable {
     @Override
-    public void doCommand(MessageChannel channel, String userMessage) {
+    public void doCommand(MessageChannel channel, User user, String userMessage) {
 //        if (userMessage.equals("사랑해")) {
         EmbedBuilder builder = new EmbedBuilder();
         MessageEmbed message = builder.setTitle("인조인간 18호가 내 여동생일리 없어")

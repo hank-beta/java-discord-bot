@@ -12,7 +12,7 @@ public class JdaConfig {
         JDABuilder jda = JDABuilder.createDefault(botKey);
         jda.enableIntents(GatewayIntent.GUILD_MESSAGES);
         jda.addEventListeners(new MessageReceiveHandler());
-        jda.setActivity(Activity.watching("활성화 상태"));
+        jda.setActivity(Activity.playing("JAVA"));
 
         try {
             jda.build();

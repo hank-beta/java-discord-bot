@@ -4,7 +4,6 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.hank.command.CommandHolder;
 import org.hank.command.CommandType;
-import org.hank.command.Commandable;
 import org.hank.utils.BotEventUtils;
 
 import java.util.Arrays;
@@ -32,14 +31,14 @@ public class MessageReceiveHandler extends ListenerAdapter {
 
         CommandType commandType = CommandType.from(command);
         String optionCommand = String.join(" ", stringWithoutCommand);
-        
+
         holder.getCommandableMap()
                 .get(commandType)
-                .doCommand(event.getChannel(), String.join(" ", optionCommand));
+                .doCommand(event.getChannel(), event.getAuthor(), String.join(" ", optionCommand));
     }
 
     private void nonePrefixProcess(MessageReceivedEvent event, String message) {
         CommandType reactionCommand = CommandType.from(message);
-        holder.getCommandableMap().get(reactionCommand).doCommand(event.getChannel(), message);
+        holder.getCommandableMap().get(reactionCommand).doCommand(event.getChannel(), event.getAuthor(), message);
     }
 }
