@@ -1,41 +1,38 @@
 package org.hank.command;
 
-import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.entities.MessageEmbed;
 import net.dv8tion.jda.api.entities.User;
 
-import java.awt.*;
-import java.time.LocalDateTime;
-
-import static org.hank.utils.BotEventUtils.sendMessage;
+import static org.hank.command.CommandMessageDirector.sendEmbeds;
+import static org.hank.command.CommandMessageDirector.sendEmbedsAll;
 
 public class ReactionCommand implements Commandable {
     @Override
     public void doCommand(MessageChannel channel, User user, String userMessage) {
-//        if (userMessage.equals("사랑해")) {
-        EmbedBuilder builder = new EmbedBuilder();
-        MessageEmbed message = builder.setTitle("인조인간 18호가 내 여동생일리 없어")
-                .setDescription("인조인간 18호가 내여동생이라는 내용")
-                .setColor(Color.PINK)
-                .setTimestamp(LocalDateTime.now())
-                .setFooter("from 인조인간 18호", "https://avatars.githubusercontent.com/u/77097180?s=400&u=d3dfeb8a627e5f78a4668ee8002563777d446d8e&v=4")
-                .setAuthor("HANK", "https://github.com/ranjafunc", "https://avatars.githubusercontent.com/u/77097180?s=400&u=d3dfeb8a627e5f78a4668ee8002563777d446d8e&v=4")
-                .addField(new MessageEmbed.Field("필드", "벨류", true))
-                .addField(new MessageEmbed.Field("필드2", "벨류2", true))
-                .addField(new MessageEmbed.Field("필드3", "벨류3", false))
-                .setImage("https://avatars.githubusercontent.com/u/77097180?s=400&u=d3dfeb8a627e5f78a4668ee8002563777d446d8e&v=4")
-                .build();
+        if (userMessage.equals("안녕")) {
+            MessageEmbed message = sendEmbeds("오니짱, 잘 잤어?", "https://i.pinimg.com/564x/22/4a/a4/224aa46e92394a4002042a03a1e1c58e.jpg");
 
+            channel.sendMessageEmbeds(message).queue();
+        }
 
-        channel.sendMessageEmbeds(message).queue();
+        if (userMessage.equals("사랑해")) {
+            String name = user.getName();
+            String keyword = "気持ち!!!!  ❤️\u200D❤️\u200D ".repeat(5) + "\n";
+            String description = keyword.repeat(10);
+
+            MessageEmbed message = sendEmbedsAll(name + "군!! ", description, null);
+
+            channel.sendMessageEmbeds(message).queue();
+        }
+
+        if (userMessage.equals("굿모닝")) {
+            String name = user.getName();
+            MessageEmbed message = sendEmbeds(name + "군도 좋은 아침입니다.", null);
+            channel.sendMessageEmbeds(message).queue();
+        }
     }
-//
-//
-//        if (userMessage.equals("안녕")) {
-//            sendMessage(channel, "안녕하세요.");
-//        }
-//    }
+
 
     @Override
     public CommandType getCommandType() {

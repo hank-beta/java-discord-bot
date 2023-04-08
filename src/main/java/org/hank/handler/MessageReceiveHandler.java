@@ -31,10 +31,11 @@ public class MessageReceiveHandler extends ListenerAdapter {
 
         CommandType commandType = CommandType.from(command);
         String optionCommand = String.join(" ", stringWithoutCommand);
+        String optionMessage = optionCommand.length() > 0 ? optionCommand : command;
 
         holder.getCommandableMap()
                 .get(commandType)
-                .doCommand(event.getChannel(), event.getAuthor(), String.join(" ", optionCommand));
+                .doCommand(event.getChannel(), event.getAuthor(), String.join(" ", optionMessage));
     }
 
     private void nonePrefixProcess(MessageReceivedEvent event, String message) {
