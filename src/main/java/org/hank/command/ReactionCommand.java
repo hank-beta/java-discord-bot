@@ -28,8 +28,8 @@ public class ReactionCommand implements Commandable {
 
         if (userMessage.equals("굿모닝")) {
             String name = user.getName();
-            MessageEmbed message = sendEmbeds(name + "군도 좋은 아침입니다.", null);
-            channel.sendMessageEmbeds(message).queue();
+            sendEmbeds(name + "군도 좋은 아침입니다.", null);
+//            channel.sendMessageEmbeds(message).queue();
         }
     }
 

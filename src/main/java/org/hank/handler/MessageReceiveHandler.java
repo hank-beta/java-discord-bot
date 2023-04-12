@@ -19,12 +19,12 @@ public class MessageReceiveHandler extends ListenerAdapter {
         String message = BotEventUtils.extractRawMessage(event);
 
 
-        if (!message.startsWith("*")) {
+        if (!message.startsWith("ㅂㅌ")) {
 //            nonePrefixProcess(event, message);
             return;
         }
 
-        String userMessage = message.substring(1);
+        String userMessage = message.substring(2);
         String[] splitedUserMessage = userMessage.split(" ");
         String[] stringWithoutCommand = Arrays.copyOfRange(splitedUserMessage, 1, splitedUserMessage.length);
         String command = splitedUserMessage[0];
